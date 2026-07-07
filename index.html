@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة ألمنيوم مطبوعة حسب الطلب | جودة احترافية</title>
+    <meta name="description" content="حوّل أي صورة تحبها إلى لوحة ألمنيوم فاخرة بجودة عالية وألوان زاهية تدوم لسنوات. توصيل إلى جميع ولايات الجزائر.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink-black: #0a0a0a;
+            --parchment: #f5f0e8;
+            --warm-gray: #d4cfc5;
+            --steel: #2c2c2c;
+            --blood-red: #8b1a1a;
+            --gold: #c9a94e;
+            --dark-gold: #9e7b2f;
+            --light-gold: #e8d48b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: var(--ink-black);
+            color: var(--parchment);
+            overflow-x: hidden;
+            direction: rtl;
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            background: linear-gradient(90deg, var(--dark-gold), var(--gold), var(--dark-gold));
+            color: var(--ink-black);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1001;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .top-bar {
+            background-size: 200% 200%;
+            background-image: linear-gradient(90deg, var(--dark-gold), var(--gold), var(--light-gold), var(--gold), var(--dark-gold));
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 169, 78, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--parchment);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--warm-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--ink-black);
+            border: none;
+            padding: 10px 25px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .nav-cta:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 169, 78, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1002;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--parchment);
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* MOBILE MENU OVERLAY */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .mobile-menu-overlay.active {
+            display: flex;
+        }
+
+        .mobile-menu-overlay a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu-overlay a:hover {
+            color: var(--gold);
+        }
+
+        /* INK SPLATTERS */
+        .ink-splatter {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 40px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(44, 44, 44, 0.3) 0%, var(--ink-black) 70%);
+        }
+
+        .hero .ink-splatter-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--gold);
+            top: -200px;
+            left: -100px;
+        }
+
+        .hero .ink-splatter-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--blood-red);
+            bottom: -200px;
+            right: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1400px;
+            padding: 100px 60px 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            order: 1;
+        }
+
+        .hero-image-container {
+            position: relative;
+            order: 2;
+        }
+
+        .edition-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .edition-tag::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .hero-title .accent {
+            color: var(--gold);
+            display: block;
+            font-size: 3.4rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--warm-gray);
+            line-height: 1.9;
+            max-width: 500px;
+            font-weight: 400;
+        }
+
+        .hero-price-box {
+            background: rgba(201, 169, 78, 0.08);
+            border: 1px solid rgba(201, 169, 78, 0.2);
+            padding: 20px 25px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .price-current {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .price-currency {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .price-delivery {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            background: rgba(245, 240, 232, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--ink-black);
+            border: none;
+            padding: 16px 45px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: right 0.6s;
+        }
+
+        .btn-primary:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 169, 78, 0.4);
+        }
+
+        .btn-primary:hover::before {
+            right: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--parchment);
+            border: 1px solid rgba(245, 240, 232, 0.3);
+            padding: 16px 35px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(245, 240, 232, 0.1);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+        }
+
+        .trust-icon {
+            font-size: 1.1rem;
+        }
+
+        /* HERO IMAGE */
+        .hero-image-frame {
+            position: relative;
+            border: 1px solid rgba(201, 169, 78, 0.2);
+            padding: 15px;
+            background: rgba(245, 240, 232, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-image-frame::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border: 1px solid rgba(201, 169, 78, 0.1);
+            border-radius: 9px;
+            pointer-events: none;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(201, 169, 78, 0.03) 50%, transparent 70%);
+            animation: imagePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes imagePulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .placeholder-text {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            opacity: 0.4;
+        }
+
+        .floating-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--blood-red);
+            color: white;
+            padding: 10px 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 3;
+            border-radius: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--ink-black);
+            padding: 5px 20px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--gold);
+            white-space: nowrap;
+            border: 1px solid rgba(201, 169, 78, 0.2);
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2s infinite;
+            z-index: 5;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--warm-gray);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 35px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* SECTION COMMON */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+
+        .section-subtitle {
+            color: var(--warm-gray);
+            font-size: 1rem;
+            margin-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* HOW TO ORDER */
+        .how-to-order {
+            padding: 100px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-to-order .ink-splatter {
+            width: 400px;
+            height: 400px;
+            background: var(--gold);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card {
+            background: rgba(245, 240, 232, 0.03);
+            border: 1px solid rgba(245, 240, 232, 0.08);
+            padding: 40px 25px;
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 169, 78, 0.3);
+            background: rgba(245, 240, 232, 0.05);
+        }
+
+        .step-card:hover::before {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            background: rgba(201, 169, 78, 0.1);
+            border: 2px solid rgba(201, 169, 78, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin: 0 auto 20px;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .steps-connector {
+            display: none;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 100px 60px;
+            background: linear-gradient(180deg, transparent, rgba(245, 240, 232, 0.02), transparent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(245, 240, 232, 0.03);
+            border: 1px solid rgba(245, 240, 232, 0.08);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 169, 78, 0.25);
+            background: rgba(245, 240, 232, 0.05);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(201, 169, 78, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            border-color: var(--gold);
+            background: rgba(201, 169, 78, 0.1);
+            transform: scale(1.1);
+        }
+
+        .feature-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* PRODUCT DETAILS / SPECS */
+        .details {
+            padding: 100px 60px;
+        }
+
+        .details-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .details-visual {
+            position: relative;
+        }
+
+        .details-image-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #151515, #222, #151515);
+            border-radius: 8px;
+            border: 1px solid rgba(201, 169, 78, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .detail-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .showcase-item {
+            background: rgba(245, 240, 232, 0.04);
+            border: 1px solid rgba(245, 240, 232, 0.08);
+            padding: 25px 18px;
+            text-align: center;
+            transition: all 0.3s;
+            border-radius: 6px;
+        }
+
+        .showcase-item:hover {
+            border-color: rgba(201, 169, 78, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .showcase-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .showcase-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .showcase-text {
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+            font-weight: 400;
+        }
+
+        .details-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .detail-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .detail-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        .detail-list li .check {
+            color: var(--gold);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .specs-table {
+            margin-top: 15px;
+            border-top: 1px solid rgba(245, 240, 232, 0.1);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(245, 240, 232, 0.05);
+        }
+
+        .spec-label {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--warm-gray);
+            font-weight: 600;
+        }
+
+        .spec-value {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* WHY US */
+        .why-us {
+            padding: 100px 60px;
+            background: rgba(245, 240, 232, 0.02);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(245, 240, 232, 0.06);
+            border-radius: 8px;
+            transition: all 0.4s;
+        }
+
+        .why-card:hover {
+            border-color: rgba(201, 169, 78, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            border: 2px solid rgba(201, 169, 78, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover .why-icon {
+            border-color: var(--gold);
+            background: rgba(201, 169, 78, 0.1);
+        }
+
+        .why-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .why-desc {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            line-height: 1.6;
+        }
+
+        /* GALLERY PLACEHOLDER */
+        .gallery {
+            padding: 100px 60px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 280px;
+            background: linear-gradient(135deg, #151515, #1e1e1e, #151515);
+            border-radius: 8px;
+            border: 1px solid rgba(245, 240, 232, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.4s;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(201, 169, 78, 0.05) 60%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover {
+            border-color: rgba(201, 169, 78, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        .gallery-placeholder-icon {
+            font-size: 2rem;
+            opacity: 0.2;
+        }
+
+        .gallery-placeholder-text {
+            font-size: 0.75rem;
+            opacity: 0.3;
+            color: var(--warm-gray);
+        }
+
+        /* REVIEWS */
+        .reviews {
+            padding: 100px 60px;
+            background: rgba(245, 240, 232, 0.02);
+        }
+
+        .reviews-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .reviews-big-rating {
+            text-align: center;
+        }
+
+        .big-number {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .big-stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-top: 5px;
+        }
+
+        .big-count {
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+            margin-top: 5px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review-card {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(245, 240, 232, 0.08);
+            padding: 30px;
+            transition: all 0.3s;
+            border-radius: 8px;
+        }
+
+        .review-card:hover {
+            border-color: rgba(201, 169, 78, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--warm-gray);
+            font-weight: 400;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .review-text::before {
+            content: '"';
+            font-size: 2rem;
+            color: var(--gold);
+            opacity: 0.5;
+            line-height: 0;
+            vertical-align: middle;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(201, 169, 78, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .review-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .review-verified {
+            font-size: 0.7rem;
+            color: var(--gold);
+        }
+
+        /* CTA */
+        .cta {
+            padding: 120px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201, 169, 78, 0.08) 0%, transparent 60%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: var(--warm-gray);
+            margin-bottom: 10px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .cta-price-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(201, 169, 78, 0.1);
+            border: 1px solid rgba(201, 169, 78, 0.25);
+            padding: 15px 35px;
+            border-radius: 8px;
+            margin: 25px 0 35px;
+        }
+
+        .cta-price-highlight .price {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .cta-price-highlight .currency {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .cta-whatsapp {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .cta-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);
+        }
+
+        .cta-messenger {
+            background: #0084FF;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .cta-messenger:hover {
+            background: #006ae0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 132, 255, 0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px 60px;
+            border-top: 1px solid rgba(245, 240, 232, 0.08);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--warm-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(245, 240, 232, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--gold);
+            background: rgba(201, 169, 78, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(245, 240, 232, 0.3);
+        }
+
+        /* FLOATING CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s;
+        }
+
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating-cta button {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .floating-cta button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        /* WHATSAPP FLOATING ICON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+            animation: whatsappPulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.7s ease;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.7s ease;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* NOTIFICATION */
+        .notification {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(201, 169, 78, 0.95);
+            color: var(--ink-black);
+            padding: 15px 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 10000;
+            transition: transform 0.4s ease;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 100px 40px 60px;
+            }
+
+            .hero-text {
+                order: 1;
+            }
+
+            .hero-image-container {
+                order: 2;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-title .accent {
+                font-size: 2.8rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .details-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                height: 300px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .top-bar {
+                font-size: 0.75rem;
+                padding: 8px 15px;
+            }
+
+            .hero-content {
+                padding: 80px 20px 40px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-title .accent {
+                font-size: 2.2rem;
+            }
+
+            .hero-image-placeholder {
+                height: 350px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-trust {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .price-current {
+                font-size: 2rem;
+            }
+
+            .how-to-order, .features, .details, .why-us, .gallery, .reviews, .cta {
+                padding: 70px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                height: 250px;
+            }
+
+            .gallery-item {
+                height: 180px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-whatsapp, .cta-messenger {
+                width: 100%;
+                justify-content: center;
+                margin: 5px 0;
+            }
+
+            .detail-showcase {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+
+            .big-number {
+                font-size: 3rem;
+            }
+
+            .hero-price-box {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .hero-title .accent {
+                font-size: 1.9rem;
+            }
+
+            .price-current {
+                font-size: 1.8rem;
+            }
+
+            .hero-image-placeholder {
+                height: 280px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                height: 200px;
+            }
+
+            .gallery-item {
+                height: 150px;
+            }
+
+            .cta-price-highlight .price {
+                font-size: 1.8rem;
+            }
+
+            .floating-cta button {
+                font-size: 0.75rem;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        🚚 توصيل إلى جميع ولايات الجزائر
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="logo">PRINT<span>DZ</span></div>
+        <ul class="nav-links">
+            <li><a href="#how-to-order">كيف تطلب؟</a></li>
+            <li><a href="#features">المميزات</a></li>
+            <li><a href="#details">المواصفات</a></li>
+            <li><a href="#reviews">آراء الزبائن</a></li>
+        </ul>
+        <button class="nav-cta" onclick="scrollToOrder()">اطلب الآن</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <a href="#how-to-order" onclick="closeMobileMenu()">كيف تطلب؟</a>
+        <a href="#features" onclick="closeMobileMenu()">المميزات</a>
+        <a href="#details" onclick="closeMobileMenu()">المواصفات</a>
+        <a href="#reviews" onclick="closeMobileMenu()">آراء الزبائن</a>
+        <a href="#cta" onclick="closeMobileMenu()" style="color: var(--gold);">اطلب الآن</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="ink-splatter ink-splatter-1"></div>
+            <div class="ink-splatter ink-splatter-2"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text slide-right">
+                <span class="edition-tag">لوحة ألمنيوم مطبوعة حسب الطلب</span>
+
+                <h1 class="hero-title">
+                    أنت تختار الصورة...
+                    <span class="accent">ونحن نطبعها بإتقان.</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    حوّل أي صورة تحبها إلى لوحة ألمنيوم فاخرة بجودة عالية وألوان زاهية تدوم لسنوات.
+                    مناسبة لديكور المنزل، المكتب أو كهدية مميزة.
+                </p>
+
+                <div class="hero-price-box">
+                    <div>
+                        <span class="price-current">1450</span>
+                        <span class="price-currency">دج</span>
+                    </div>
+                    <div class="price-delivery">
+                        🚚 توصيل لجميع الولايات
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToOrder()">
+                        اطلب الآن
+                        <span>←</span>
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+                        شاهد الأعمال
+                        <span>🖼️</span>
+                    </button>
+                </div>
+
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <span class="trust-icon">✅</span>
+                        <span>جودة احترافية</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">⚡</span>
+                        <span>تنفيذ سريع</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">📦</span>
+                        <span>تغليف آمن</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">💎</span>
+                        <span>خامة فاخرة</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-container slide-left">
+                <div class="floating-badge">🔥 الأكثر مبيعاً</div>
+                <div class="hero-image-frame">
+                    <div class="hero-image-placeholder">
+                        <span class="placeholder-icon">🖼️</span>
+                        <span class="placeholder-text">صورة المنتج الرئيسية</span>
+                    </div>
+                    <div class="image-label">✨ طباعة سوبليميشن احترافية</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>اكتشف المزيد</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- HOW TO ORDER -->
+    <section class="how-to-order" id="how-to-order">
+        <div class="ink-splatter"></div>
+        <div class="section-header fade-in">
+            <span class="section-label">✦ خطوات بسيطة ✦</span>
+            <h2 class="section-title">كيف تطلب؟</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">اطلب لوحتك في 4 خطوات سهلة وسريعة</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card fade-in">
+                <div class="step-number">1</div>
+                <div class="step-icon">📸</div>
+                <h3 class="step-title">اختر الصورة</h3>
+                <p class="step-desc">اختر أي صورة تحبها — أنمي، سيارات، كرة قدم، صورة شخصية، أو أي تصميم تريده.</p>
+            </div>
+
+            <div class="step-card fade-in">
+                <div class="step-number">2</div>
+                <div class="step-icon">📱</div>
+                <h3 class="step-title">أرسلها لنا</h3>
+                <p class="step-desc">أرسل الصورة عبر واتساب أو ماسنجر مع تحديد المقاس المطلوب.</p>
+            </div>
+
+            <div class="step-card fade-in">
+                <div class="step-number">3</div>
+                <div class="step-icon">🎨</div>
+                <h3 class="step-title">نطبعها باحترافية</h3>
+                <p class="step-desc">نطبع صورتك على ألمنيوم فاخر بتقنية السوبليميشن وبألوان زاهية تدوم طويلاً.</p>
+            </div>
+
+            <div class="step-card fade-in">
+                <div class="step-number">4</div>
+                <div class="step-icon">🚚</div>
+                <h3 class="step-title">نرسلها إليك</h3>
+                <p class="step-desc">نوصلها لباب بيتك أينما كنت في الجزائر، مغلفة بعناية وجاهزة للتعليق.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="section-header fade-in">
+            <span class="section-label">✦ لماذا تختارنا ✦</span>
+            <h2 class="section-title">مميزات لوحاتنا</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-title">طباعة حسب الطلب</h3>
+                <p class="feature-desc">بأي صورة تختارها — أنمي، سيارات، ألعاب، صور عائلية أو أي تصميم خاص.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🌈</div>
+                <h3 class="feature-title">ألوان زاهية ودقة عالية</h3>
+                <p class="feature-desc">طباعة سوبليميشن تضمن ألواناً حية ودقة متناهية في كل التفاصيل.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">💧</div>
+                <h3 class="feature-title">مقاومة للماء والرطوبة</h3>
+                <p class="feature-desc">خامة ألمنيوم متينة لا تتأثر بالماء أو الرطوبة، مثالية لجميع البيئات.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">خامة فاخرة ومتينة</h3>
+                <p class="feature-desc">ألمنيوم خاص بالسوبليميشن، يمنح اللوحة مظهراً عصرياً وأنيقاً يدوم لسنوات.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎁</div>
+                <h3 class="feature-title">هدية مميزة</h3>
+                <p class="feature-desc">مثالية كهدية لأي مناسبة — أعياد ميلاد، ذكرى زواج، تخرج أو أي مناسبة خاصة.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🔩</div>
+                <h3 class="feature-title">جاهزة للتعليق</h3>
+                <p class="feature-desc">تصلك اللوحة جاهزة للتعليق مباشرة على الحائط بدون أي إضافات.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT DETAILS -->
+    <section class="details" id="details">
+        <div class="details-content">
+            <div class="details-visual slide-right">
+                <div class="details-image-placeholder">
+                    <span class="placeholder-icon">🖼️</span>
+                    <span class="placeholder-text">صورة تفصيلية للمنتج</span>
+                </div>
+                <div class="detail-showcase">
+                    <div class="showcase-item">
+                        <div class="showcase-icon">🏗️</div>
+                        <div class="showcase-title">ألمنيوم متين</div>
+                        <div class="showcase-text">خامة خاصة بالسوبليميشن</div>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="showcase-icon">🖨️</div>
+                        <div class="showcase-title">طباعة HD</div>
+                        <div class="showcase-text">جودة احترافية عالية</div>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="showcase-icon">📐</div>
+                        <div class="showcase-title">مقاسات متعددة</div>
+                        <div class="showcase-text">حسب اختيارك</div>
+                    </div>
+                    <div class="showcase-item">
+                        <div class="showcase-icon">🔧</div>
+                        <div class="showcase-title">تعليق سهل</div>
+                        <div class="showcase-text">جاهزة مباشرة</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-info slide-left">
+                <span class="section-label">المواصفات التقنية</span>
+                <h2 class="section-title" style="text-align: right; font-size: 2rem;">جودة لا تُضاهى</h2>
+
+                <ul class="detail-list">
+                    <li>
+                        <span class="check">◆</span>
+                        خامة ألمنيوم خاصة بالسوبليميشن عالية الجودة والمتانة
+                    </li>
+                    <li>
+                        <span class="check">◆</span>
+                        طباعة احترافية بتقنية السوبليميشن بدقة ألوان عالية
+                    </li>
+                    <li>
+                        <span class="check">◆</span>
+                        المقاسات متوفرة حسب الطلب لتناسب مساحتك
+                    </li>
+                    <li>
+                        <span class="check">◆</span>
+                        مقاومة للماء، الرطوبة والخدوش — تدوم لسنوات طويلة
+                    </li>
+                    <li>
+                        <span class="check">◆</span>
+                        جاهزة للتعليق مباشرة على الحائط بدون تجهيزات إضافية
+                    </li>
+                    <li>
+                        <span class="check">◆</span>
+                        تغليف آمن ومحكم لضمان وصولها في حالة ممتازة
+                    </li>
+                </ul>
+
+                <div class="specs-table">
+                    <div class="spec-row">
+                        <span class="spec-label">الخامة</span>
+                        <span class="spec-value">ألمنيوم سوبليميشن</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">تقنية الطباعة</span>
+                        <span class="spec-value">سوبليميشن احترافية</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">المقاسات</span>
+                        <span class="spec-value">حسب الطلب</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">التعليق</span>
+                        <span class="spec-value">جاهزة مباشرة</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">التوصيل</span>
+                        <span class="spec-value">جميع ولايات الجزائر</span>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="scrollToOrder()" style="margin-top: 10px; width: fit-content;">
+                    اطلب الآن — 1450 دج
+                    <span>←</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="why-us" id="why-us">
+        <div class="section-header fade-in">
+            <span class="section-label">✦ ثقة وجودة ✦</span>
+            <h2 class="section-title">لماذا نحن؟</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <div class="why-icon">⭐</div>
+                <h3 class="why-title">جودة احترافية</h3>
+                <p class="why-desc">نستخدم أفضل المعدات والخامات لضمان جودة لا مثيل لها.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-icon">⚡</div>
+                <h3 class="why-title">تنفيذ سريع</h3>
+                <p class="why-desc">نحرص على تجهيز طلبك في أسرع وقت ممكن.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-icon">📦</div>
+                <h3 class="why-title">تغليف آمن</h3>
+                <p class="why-desc">تغليف محكم يحمي لوحتك أثناء الشحن لتصلك في حالة ممتازة.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-icon">💬</div>
+                <h3 class="why-title">خدمة زبائن ممتازة</h3>
+                <p class="why-desc">فريقنا متواجد دائماً للإجابة على استفساراتك ومساعدتك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="section-header fade-in">
+            <span class="section-label">✦ من أعمالنا ✦</span>
+            <h2 class="section-title">معرض الأعمال</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">بعض من لوحاتنا المطبوعة لزبائننا</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <span class="gallery-placeholder-icon">🖼️</span>
+                <span class="gallery-placeholder-text">صورة عمل 1</span>
+            </div>
+            <div class="gallery-item fade-in">
+                <span class="gallery-placeholder-icon">🖼️</span>
+                <span class="gallery-placeholder-text">صورة عمل 2</span>
+            </div>
+            <div class="gallery-item fade-in">
+                <span class="gallery-placeholder-icon">🖼️</span>
+                <span class="gallery-placeholder-text">صورة عمل 3</span>
+            </div>
+            <div class="gallery-item fade-in">
+                <span class="gallery-placeholder-icon">🖼️</span>
+                <span class="gallery-placeholder-text">صورة عمل 4</span>
+            </div>
+            <div class="gallery-item fade-in">
+                <span class="gallery-placeholder-icon">🖼️</span>
+                <span class="gallery-placeholder-text">صورة عمل 5</span>
+            </div>
+            <div class="gallery-item fade-in">
+                <span class="gallery-placeholder-icon">🖼️</span>
+                <span class="gallery-placeholder-text">صورة عمل 6</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="reviews-content">
+            <div class="section-header fade-in">
+                <span class="section-label">✦ رضا الزبائن ✦</span>
+                <h2 class="section-title">آراء زبائننا</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="reviews-stats fade-in">
+                <div class="reviews-big-rating">
+                    <div class="big-number">4.9</div>
+                    <div class="big-stars">★★★★★</div>
+                    <div class="big-count">من تقييمات الزبائن</div>
+                </div>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        بصراحة الجودة فاقت توقعاتي والألوان روعة. اللوحة تبان فخمة جداً في الصالون وكل اللي يجيني يسألني عليها.
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">أ</div>
+                        <div>
+                            <div class="review-name">أحمد ب.</div>
+                            <div class="review-verified">✓ زبون موثق</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        وصلتني كما طلبتها بالضبط، شكراً على الاحترافية. التغليف كان ممتاز واللوحة وصلت سليمة 100%.
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">س</div>
+                        <div>
+                            <div class="review-name">سارة م.</div>
+                            <div class="review-verified">✓ زبون موثق</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card fade-in">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        أفضل هدية طلبتها، أكيد راح نعاود نطلب. فرّحت بيها صاحبي وحبها بزاف. العمل متقن والتوصيل كان سريع.
+                    </p>
+                    <div class="review-author">
+                        <div class="review-avatar">ي</div>
+                        <div>
+                            <div class="review-name">ياسين ع.</div>
+                            <div class="review-verified">✓ زبون موثق</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="cta">
+        <div class="cta-bg"></div>
+        <div class="cta-content fade-in">
+            <span class="section-label">جاهز تطلب؟</span>
+            <h2 class="cta-title" style="margin-top: 10px;">اطلب لوحتك الآن!</h2>
+            <p class="cta-subtitle">
+                اختر صورتك المفضلة وأرسلها لنا، ونحن نحولها إلى لوحة ألمنيوم فاخرة تزين مكانك.
+            </p>
+
+            <div class="cta-price-highlight">
+                <span class="price">1450</span>
+                <span class="currency">دج فقط</span>
+                <span style="font-size: 0.85rem; color: var(--warm-gray);">+ توصيل مجاني</span>
+            </div>
+
+            <div class="cta-buttons">
+                <button class="cta-whatsapp" onclick="openWhatsApp()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    اطلب عبر واتساب
+                </button>
+
+                <button class="cta-messenger" onclick="openMessenger()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.28V22l2.96-1.63c.84.23 1.72.35 2.65.35h.24C16.64 20.72 22 16.59 22 11.7 22 6.13 17.64 2 12 2zm1.17 13.12l-2.54-2.71-4.97 2.71 5.47-5.81 2.61 2.71 4.89-2.71-5.46 5.81z"/></svg>
+                    اطلب عبر ماسنجر
+                </button>
+            </div>
+
+            <p style="margin-top: 25px; font-size: 0.8rem; color: var(--warm-gray);">
+                ⚡ أرسل لنا الصورة + المقاس المطلوب وسنتواصل معك فوراً
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="margin-bottom: 25px; display: inline-block; font-size: 1.5rem;">PRINT<span>DZ</span></div>
+            <p style="color: var(--warm-gray); margin-bottom: 25px; font-size: 0.9rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+                لوحات ألمنيوم مطبوعة حسب الطلب بجودة احترافية عالية.
+                نوصّل لجميع ولايات الجزائر.
+            </p>
+
+            <div class="footer-social">
+                <a href="#" aria-label="فيسبوك">📘</a>
+                <a href="#" aria-label="انستغرام">📸</a>
+                <a href="#" aria-label="واتساب">💬</a>
+                <a href="#" aria-label="تيك توك">🎵</a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#how-to-order">كيف تطلب؟</a>
+                <a href="#features">المميزات</a>
+                <a href="#details">المواصفات</a>
+                <a href="#reviews">آراء الزبائن</a>
+                <a href="#cta">اطلب الآن</a>
+            </div>
+
+            <p class="footer-copy">© 2024 PrintDZ — جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING ORDER BUTTON -->
+    <div class="floating-cta" id="floatingCta">
+        <button onclick="scrollToOrder()">
+            🛒 اطلب الآن — 1450 دج
+        </button>
+    </div>
+
+    <!-- WHATSAPP FLOATING ICON -->
+    <a href="#" class="whatsapp-float" id="whatsappFloat" onclick="openWhatsApp(); return false;" aria-label="تواصل عبر واتساب">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">✓ تم النسخ! تواصل معنا الآن</div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const topBar = document.querySelector('.top-bar');
+        let topBarHeight = topBar.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > topBarHeight) {
+                navbar.classList.add('scrolled');
+                navbar.style.top = '0';
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.style.top = topBarHeight - window.scrollY + 'px';
+            }
+        });
+
+        // Set initial nav position
+        navbar.style.top = topBarHeight + 'px';
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Floating CTA visibility
+        const floatingCta = document.getElementById('floatingCta');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Staggered animation for sibling elements
+                    const parent = entry.target.parentElement;
+                    const siblings = parent.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in');
+                    let delay = 0;
+
+                    siblings.forEach((sibling) => {
+                        if (sibling === entry.target || !sibling.classList.contains('visible')) {
+                            setTimeout(() => {
+                                sibling.classList.add('visible');
+                            }, delay);
+                            delay += 100;
+                        }
+                    });
+
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll to order
+        function scrollToOrder() {
+            document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // WhatsApp
+        function openWhatsApp() {
+            const message = encodeURIComponent('السلام عليكم، أريد طلب لوحة ألمنيوم مطبوعة. المقاس: \nالصورة: ');
+            // Replace with your actual WhatsApp number
+            window.open('https://wa.me/213XXXXXXXXX?text=' + message, '_blank');
+        }
+
+        // Messenger
+        function openMessenger() {
+            // Replace with your actual Messenger link
+            window.open('https://m.me/YOURPAGENAME', '_blank');
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax subtle effect on hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const heroImage = document.querySelector('.hero-image-frame');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.03}px)`;
+            }
+        });
+
+        // Update remaining count animation
+        function animateCounter(el, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(current);
+            }, 30);
+        }
+
+        // Resize handler for top bar
+        window.addEventListener('resize', () => {
+            topBarHeight = topBar.offsetHeight;
+            if (window.scrollY <= topBarHeight) {
+                navbar.style.top = topBarHeight - window.scrollY + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
